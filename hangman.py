@@ -124,7 +124,11 @@ class HangmanGame(QWidget):
         if symbol in self.ipa_set:
             display_index = 0
             for i, char in enumerate(self.ipa):
-                if self.display_ipa[display_index] == '|' or self.display_ipa[display_index] == ',' or self.display_ipa[display_index] == "'":  display_index += 1;
+                if self.display_ipa[display_index] == '|' or self.display_ipa[display_index] == "," or self.display_ipa[display_index] == "'":  
+                    # print(self.display_ipa[display_index])
+                    display_index += 1;
+                if self.display_ipa[display_index] == '|' or self.display_ipa[display_index] == "," or self.display_ipa[display_index] == "'":  
+                    display_index += 1;
                 if char == symbol: 
                     self.display_ipa[display_index] = symbol
                 display_index += 1
@@ -142,6 +146,7 @@ class HangmanGame(QWidget):
         for i, char in enumerate(self.ipa):
             if (char[len(char)-1].isdigit()): self.ipa[i] = char[:len(char)-1]
 
+        print(self.ipa)
         self.ipa_set = set(self.ipa)
         self.guessed_symbols = set()
         self.display_ipa = ["_"] * len(self.ipa)
